@@ -1,32 +1,65 @@
-import { Quote, Star } from "lucide-react";
+import { Heart, ShieldCheck, MessageCircle, Clock3, House, Users } from "lucide-react";
 
-const testimonials = [
-  { name: "Margaret L.", location: "Calgary, AB", text: "The aide who looks after my mother is incredibly kind and professional. We finally have peace of mind." },
-  { name: "James R.", location: "Edmonton, AB", text: "After my hip surgery, the recovery care was outstanding. My caregiver helped me regain confidence safely." },
-  { name: "Susan T.", location: "Red Deer, AB", text: "The companionship care has made such a difference. Dad looks forward to every visit and feels like himself again." },
-  { name: "David K.", location: "Calgary, AB", text: "Professional, punctual, and genuinely caring. The team went above and beyond for our family." },
-  { name: "Linda M.", location: "Airdrie, AB", text: "The difference is remarkable—exceptional caregivers who treat my mom with dignity and patience." },
-  { name: "Robert P.", location: "Lethbridge, AB", text: "Overnight care gave our family the rest we desperately needed. Knowing Dad is safe lets us sleep peacefully." },
+const priorities = [
+  {
+    icon: Heart,
+    title: "Dignity in daily care",
+    text: "Personal support should follow the person's preferences, respect privacy and move at a comfortable pace.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Confidence and safety",
+    text: "Families often want to understand screening, qualifications, supervision and how concerns are handled.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Clear communication",
+    text: "Agree on who to contact, how updates are shared and how the person receiving care is included.",
+  },
+  {
+    icon: Clock3,
+    title: "A schedule that fits",
+    text: "Talk through visit times, consistency, cancellations and options if routines or support needs change.",
+  },
+  {
+    icon: House,
+    title: "Respect for home",
+    text: "A good visit takes account of the person's space, household habits and the way they like things done.",
+  },
+  {
+    icon: Users,
+    title: "A team approach",
+    text: "With consent, involve family or other trusted people in planning and communicating about support.",
+  },
 ];
 
 const TestimonialsSection = ({ limit }: { limit?: number }) => {
-  const shown = limit ? testimonials.slice(0, limit) : testimonials;
+  const shown = limit ? priorities.slice(0, limit) : priorities;
   return (
     <section className="animate-section border-b border-border bg-card py-24">
       <div className="container">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div><p className="section-label">Family stories</p><h2 className="section-title mt-5"><span className="animate-word">Trusted in the moments</span> <span className="animate-word text-primary [animation-delay:120ms]">that matter.</span></h2></div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-foreground"><span className="flex gap-1 text-primary">{[1,2,3,4,5].map((n) => <Star key={n} size={14} fill="currentColor" />)}</span> 5.0 average</div>
+          <div>
+            <p className="section-label">Choosing home support</p>
+            <h2 className="section-title mt-5 max-w-2xl">
+              The details that help care feel right.
+            </h2>
+          </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {shown.map((item) => (
-            <article key={item.name} className="theme-card motion-hover group min-h-[280px] p-8 transition-colors hover:bg-secondary/40">
-              <Quote size={28} strokeWidth={1.2} className="text-primary" />
-              <blockquote className="mt-10 text-lg leading-7 text-foreground">“{item.text}”</blockquote>
-              <div className="mt-8 border-t border-border pt-5"><p className="text-xs font-bold uppercase tracking-[0.1em] text-foreground">{item.name}</p><p className="mt-1 text-xs text-muted-foreground">{item.location}</p></div>
+          {shown.map(({ icon: Icon, title, text }) => (
+            <article key={title} className="theme-card motion-hover min-h-[220px] p-7 transition-colors hover:bg-secondary/40">
+              <Icon size={22} strokeWidth={1.5} className="text-primary" />
+              <h3 className="mt-6 text-xl text-foreground">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
             </article>
           ))}
         </div>
+        <p className="mt-8 max-w-3xl text-xs leading-5 text-muted-foreground">
+          These are general considerations, not client testimonials or a
+          representation of specific care outcomes. Ask questions and decide
+          what matters most for your situation.
+        </p>
       </div>
     </section>
   );

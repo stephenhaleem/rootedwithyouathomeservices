@@ -6,7 +6,6 @@ import TrustSection from "@/components/Trustsection";
 import {
   DayToDaySection,
   HomeVisitSection,
-  HomeGallerySection,
   DecisionStepsSection,
   FaqSection,
 } from "@/components/HomeFeatureSections";
@@ -22,7 +21,6 @@ const Index = () => (
     <TrustSection />
     <DayToDaySection />
     <HomeVisitSection />
-    <HomeGallerySection />
     <DecisionStepsSection />
     <FaqSection />
     <ContactForm />

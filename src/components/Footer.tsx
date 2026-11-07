@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Navbar";
+import { openCookieSettings } from "@/lib/cookie-preferences";
+import { contactPhone, contactPhoneHref } from "@/lib/contact";
 
 const cols = [
   {
@@ -7,7 +9,7 @@ const cols = [
     links: [
       ["Our support", "/about"],
       ["Services", "/services"],
-      ["Our team", "/testimonials"],
+      ["Choosing care", "/testimonials"],
       ["Our approach", "/about"],
     ],
   },
@@ -46,24 +48,24 @@ const Footer = () => (
             Start with a conversation
           </p>
           <a
-            href="tel:6135550148"
-            className="mt-4 block font-serif text-[26px] text-primary"
+            href={contactPhoneHref}
+            className="mt-4 block break-words font-serif text-2xl text-primary sm:text-[26px]"
           >
-            613-555-0148
+            {contactPhone}
           </a>
-          <p className="mt-3 text-sm text-muted-foreground">
-            hello@rootedwithyou.example
-          </p>
         </div>
       </div>
       <div className="grid items-center gap-3 py-7 text-[11px] text-muted-foreground md:grid-cols-3">
-        <p>© {new Date().getFullYear()} Rooted With You · Concept design</p>
+        <p>© {new Date().getFullYear()} Rooted With You</p>
         <p className="font-serif text-[15px] italic text-foreground md:text-center">
-          Dependable support. A lot of life.
+          Support that honours the life you lead.
         </p>
         <div className="flex gap-6 md:justify-end">
           <Link to="/privacy">Privacy</Link>
-          <Link to="/terms">Accessibility</Link>
+          <Link to="/terms">Terms</Link>
+          <button type="button" onClick={openCookieSettings}>
+            Cookie settings
+          </button>
         </div>
       </div>
     </div>

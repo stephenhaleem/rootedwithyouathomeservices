@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { contactPhoneHref } from "@/lib/contact";
 
 const CtaBanner = () => (
   <section className="animate-section bg-primary py-20 text-primary-foreground">
@@ -11,8 +12,8 @@ const CtaBanner = () => (
         <p className="mt-5 max-w-xl text-sm leading-6 opacity-80">Book a free, no-obligation assessment with our care team. We are available to answer questions 24 hours a day.</p>
       </div>
       <div className="flex flex-wrap gap-3">
-        <Button asChild variant="secondary" size="lg" className="rounded-full"><Link to="/contact">Book assessment <ArrowRight /></Link></Button>
-        <Button asChild size="lg" className="rounded-full border border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10"><a href="tel:18005550273"><Phone /> Call us</a></Button>
+        <Button asChild variant="secondary" size="lg" className="rounded-md transition-colors hover:bg-secondary/80"><Link to="/contact">Book assessment <ArrowRight /></Link></Button>
+        <Button asChild size="lg" className="rounded-md border border-primary-foreground/30 bg-transparent transition-colors hover:bg-primary-foreground/10"><a href={contactPhoneHref}><Phone /> Call us</a></Button>
       </div>
     </div>
   </section>

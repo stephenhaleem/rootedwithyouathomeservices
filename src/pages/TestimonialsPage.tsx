@@ -8,15 +8,14 @@ const TestimonialsPage = () => (
     <Navbar />
     <section className="animate-section border-b border-border bg-background py-20">
       <div className="container max-w-2xl">
-        <p className="section-label">Testimonials</p>
+        <p className="section-label">Making an informed choice</p>
         <h1 className="mt-5 text-4xl font-semibold leading-tight text-foreground md:text-6xl">
-          What Our Clients Say
+          What to look for in home care.
         </h1>
         <p className="mt-5 text-sm leading-6 text-muted-foreground">
-          Hear from our satisfied clients about their experiences with Rooted
-          With You. We take pride in providing compassionate and professional
-          home care services that make a difference in the lives of those we
-          serve.
+          Every person's needs and preferences are different. Use these
+          considerations to guide your questions and decide whether a service
+          feels like the right fit for you or your family.
         </p>
       </div>
     </section>

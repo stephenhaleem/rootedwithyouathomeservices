@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { contactPhone, contactPhoneHref } from "@/lib/contact";
 
 const field =
   "h-12 w-full rounded-md border border-input bg-card px-3.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
@@ -34,16 +35,13 @@ const ContactForm = () => {
             Talk to a care coordinator. Ask your questions.
           </h2>
           <p className="mt-6 max-w-[500px] text-[17px] leading-8 text-white/85">
-            Picture a relaxed conversation about your needs, your home and the
-            dependable support that could help you stay safe and confident.
+            Talk through what kind of help might fit your home and get answers
+            to the questions on your mind.
           </p>
           <div className="mt-8 space-y-3 text-[17px]">
-            <p className="flex items-center gap-3">
-              <Phone size={18} strokeWidth={1.4} /> 613-555-0148
-            </p>
-            <p className="flex items-center gap-3">
-              <Mail size={18} strokeWidth={1.4} /> hello@rootedwithyou.example
-            </p>
+            <a href={contactPhoneHref} className="flex items-center gap-3">
+              <Phone size={18} strokeWidth={1.4} /> {contactPhone}
+            </a>
           </div>
         </div>
         <form
@@ -54,7 +52,7 @@ const ContactForm = () => {
             Let's arrange a care conversation
           </h3>
           <p className="mt-2 text-xs text-muted-foreground">
-            A sample enquiry form for our imagined in-home support service.
+            This demo form does not send or store your information.
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <div>

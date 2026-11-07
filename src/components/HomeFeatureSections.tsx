@@ -39,7 +39,7 @@ const moments = [
   {
     cat: "Evening",
     title: "Good company",
-    text: "Music, familiar stories and time to unwind with dependable support nearby.",
+    text: "Music, familiar stories and time to unwind in familiar company.",
     img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85",
   },
 ];
@@ -47,14 +47,13 @@ const moments = [
 export const DayToDaySection = () => (
   <section className="bg-card py-24">
     <div className={wrap}>
-      <Label>A day with dependable support</Label>
+      <Label>From morning to evening</Label>
       <div className="mt-3 grid gap-4 md:grid-cols-2 md:items-end">
         <h2 className="text-4xl text-foreground md:text-[44px]">
           A day with room for you.
         </h2>
         <p className="max-w-[440px] text-[15px] leading-7 text-muted-foreground">
-          Imagine a day where help is available when you need it, so you can
-          stay safe, confident and connected at home.
+          See a few ways help can fit into familiar parts of the day.
         </p>
       </div>
       <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -77,7 +76,7 @@ export const DayToDaySection = () => (
         ))}
       </div>
       <p className="mt-10 text-[11px] text-muted-foreground">
-        An imagined day — activities would reflect the person's interests,
+        Examples only; activities should reflect each person's interests,
         preferences and abilities.
       </p>
     </div>
@@ -90,20 +89,19 @@ export const HomeVisitSection = () => (
       className={`${wrap} grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]`}
     >
       <div>
-        <Label>Support that fits your home</Label>
+        <Label>Routines, your way</Label>
         <h2 className="mt-4 text-4xl leading-tight text-foreground md:text-[44px]">
-          More than a visit. A dependable presence.
+          A visit shaped around your day.
         </h2>
         <p className="mt-6 max-w-[440px] text-[15px] leading-7 text-muted-foreground">
-          Licensed healthcare aides bring dependable support into the home, so
-          you can stay safe, confident and connected to the routines that matter
-          most.
+          Decide together what a visit should focus on—from getting ready in the
+          morning to sharing a meal or enjoying company.
         </p>
         <ul className="mt-6 space-y-3">
           {[
-            "Support tailored to your home",
-            "Licensed healthcare aides",
-            "Available 24/7",
+            "Choose the routines to focus on",
+            "Share preferences and familiar habits",
+            "Revisit the plan when things change",
           ].map((i) => (
             <li
               key={i}

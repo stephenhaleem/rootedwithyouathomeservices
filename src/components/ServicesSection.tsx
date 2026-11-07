@@ -34,7 +34,7 @@ const services = [
   {
     title: "Respite care",
     icon: Sun,
-    desc: "A short-term break for family caregivers, with dependable support in the comfort of home.",
+    desc: "A short-term break for family caregivers, with trusted help at home.",
     details: [
       "Time to settle in and feel at ease",
       "Everyday meals and companionship",
@@ -82,12 +82,12 @@ const ServicesSection = ({ limit }: { limit?: number }) => (
             Support tailored to home
           </p>
           <h2 className="mt-4 max-w-[480px] text-4xl leading-tight text-foreground md:text-[44px]">
-            Six dependable ways we can help.
+            Six ways we can help.
           </h2>
         </div>
         <p className="max-w-[400px] text-[15px] leading-7 text-muted-foreground md:pt-8">
-          Choose the services that fit your day, your home and your needs — from
-          a few hours of companionship to overnight care and dependable support.
+          Find practical help for daily routines, shared activities and
+          overnight reassurance.
         </p>
       </div>
       <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

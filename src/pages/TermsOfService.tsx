@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { contactPhone, contactPhoneHref } from "@/lib/contact";
 
 const TermsOfService = () => (
   <div className="min-h-screen">
@@ -35,7 +36,7 @@ const TermsOfService = () => (
         <p className="text-muted-foreground mb-6">These terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein.</p>
 
         <h2 className="text-2xl font-bold text-foreground mb-4">8. Contact</h2>
-        <p className="text-muted-foreground">For questions regarding these terms, please contact us at legal@rootedwithyou.ca or 1-800-555-CARE.</p>
+        <p className="text-muted-foreground">For questions regarding these terms, call us at <a className="text-primary underline" href={contactPhoneHref}>{contactPhone}</a>.</p>
       </div>
     </section>
     <Footer />
