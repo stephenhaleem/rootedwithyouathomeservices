@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, Phone } from "lucide-react";
 import { contactPhone, contactPhoneHref } from "@/lib/contact";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const aboutLinks = [
   {
@@ -80,7 +86,12 @@ const Navbar = () => {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [aboutOpen]);
 
+  useEffect(() => {
+    if (!open) setAboutOpen(false);
+  }, [open]);
+
   return (
+    <Sheet open={open} onOpenChange={setOpen}>
     <header className="sticky top-0 z-50 px-3 pt-[calc(env(safe-area-inset-top)+0.5rem)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[env(safe-area-inset-top)] before:bg-primary before:content-[''] sm:px-5 sm:pt-[calc(env(safe-area-inset-top)+0.75rem)]">
       <div className="relative mx-auto max-w-[1440px] rounded-xl border border-border/80 bg-background/85 px-4 shadow-lg backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 sm:px-6 lg:rounded-[1.25rem]">
         <div className="flex h-[68px] items-center justify-between gap-3">
@@ -170,69 +181,88 @@ const Navbar = () => {
             Talk to our team <ArrowRight size={16} />
           </Link>
 
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-secondary/60 lg:hidden"
-            onClick={() => setOpen((isOpen) => !isOpen)}
-            aria-label={open ? "Close navigation" : "Open navigation"}
-            aria-expanded={open}
-            aria-controls="mobile-navigation"
-          >
-            {open ? <X size={21} /> : <Menu size={21} />}
-          </button>
-        </div>
-
-        {open && (
-          <nav
-            id="mobile-navigation"
-            className="border-t border-border pb-4 pt-2 lg:hidden"
-            aria-label="Mobile primary"
-          >
+          <SheetTrigger asChild>
             <button
               type="button"
-              onClick={() => setAboutOpen((isOpen) => !isOpen)}
-              className="flex w-full items-center justify-between border-b border-border py-3 text-left text-sm font-medium text-foreground"
-              aria-expanded={aboutOpen}
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-secondary/60 lg:hidden"
+              aria-label="Open navigation"
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
             >
-              About us
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`}
-              />
+              <Menu size={21} />
             </button>
-            {aboutOpen && (
-              <div className="grid gap-1 border-b border-border py-2 pl-3">
-                {aboutLinks.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={`/about${item.hash}`}
-                    onClick={() => setOpen(false)}
-                    className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-primary"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.path}
-                className="block border-b border-border py-3 text-sm text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              to="/contact"
-              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary py-3 text-sm font-medium text-white transition-colors hover:bg-primary/90"
-            >
-              Talk to our team <ArrowRight size={16} />
-            </Link>
-          </nav>
-        )}
+          </SheetTrigger>
+
+        </div>
       </div>
     </header>
+    <SheetContent
+      id="mobile-navigation"
+      side="left"
+      className="h-dvh w-full max-w-none overflow-y-auto overscroll-contain border-r-0 px-6 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] pt-[calc(env(safe-area-inset-top)+1rem)] sm:max-w-none"
+    >
+      <SheetTitle className="sr-only">Rooted With You navigation</SheetTitle>
+      <div className="flex min-h-[68px] items-center justify-between gap-4 border-b border-border pb-4">
+        <Logo />
+      </div>
+
+      <nav
+        className="flex min-h-[calc(100dvh-14rem)] flex-col pt-8"
+        aria-label="Mobile primary"
+      >
+        <button
+          type="button"
+          onClick={() => setAboutOpen((isOpen) => !isOpen)}
+          className="flex w-full items-center justify-between border-b border-border py-5 text-left font-serif text-3xl text-foreground"
+          aria-expanded={aboutOpen}
+        >
+          About us
+          <ChevronDown
+            size={20}
+            className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`}
+          />
+        </button>
+        {aboutOpen && (
+          <div className="grid gap-1 border-b border-border py-3 pl-3">
+            {aboutLinks.map((item) => (
+              <Link
+                key={item.label}
+                to={`/about${item.hash}`}
+                onClick={() => setOpen(false)}
+                className="rounded-md px-3 py-3 text-base text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-primary"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+        {navLinks.map((link) => (
+          <Link
+            key={link.label}
+            to={link.path}
+            onClick={() => setOpen(false)}
+            className="border-b border-border py-5 font-serif text-3xl text-foreground transition-colors hover:text-primary"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+
+      <Link
+        to="/contact"
+        onClick={() => setOpen(false)}
+        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-5 py-4 text-base font-medium text-white transition-colors hover:bg-primary/90"
+      >
+        Talk to our team <ArrowRight size={18} />
+      </Link>
+      <a
+        href={contactPhoneHref}
+        className="mt-5 block text-center text-sm text-muted-foreground"
+      >
+        {contactPhone}
+      </a>
+    </SheetContent>
+    </Sheet>
   );
 };
 
