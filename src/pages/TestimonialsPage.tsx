@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 const TestimonialsPage = () => (
   <div className="min-h-screen">
     <Navbar />
-    <section className="animate-section border-b border-border bg-background py-20">
+    <section className="animate-section section-pattern pattern-dots border-b border-border bg-background py-20">
       <div className="container max-w-2xl">
         <p className="section-label">Making an informed choice</p>
         <h1 className="mt-5 text-4xl font-semibold leading-tight text-foreground md:text-6xl">

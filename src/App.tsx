@@ -23,7 +23,7 @@ const SmoothScroll = () => {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (reducedMotion || isTouch) return; // skip Lenis on touch, use native scroll
+    if (reducedMotion || isTouch) return;
 
     const lenis = new Lenis({ autoRaf: true, lerp: 0.05 });
     return () => lenis.destroy();
@@ -39,7 +39,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SmoothScroll />
-
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />

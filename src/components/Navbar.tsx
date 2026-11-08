@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  ArrowRight,
-  ChevronDown,
-  Menu,
-  Phone,
-  Sprout,
-  X,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
 import { contactPhone, contactPhoneHref } from "@/lib/contact";
+import caringHandsLogo from "@/assets/Caring Hands Elder Care Emblem.png";
 
 const aboutLinks = [
   {
@@ -40,9 +34,11 @@ export const Logo = () => (
     className="flex min-w-0 items-center gap-2.5 sm:gap-3"
     aria-label="Rooted With You home"
   >
-    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/60 text-primary sm:h-10 sm:w-10">
-      <Sprout size={18} strokeWidth={1.4} />
-    </span>
+    <img
+      src={caringHandsLogo}
+      alt="Caring Hands Elder Care emblem"
+      className="h-10 w-10 shrink-0 rounded-full border border-primary/60 bg-background object-contain shadow-sm sm:h-12 sm:w-12"
+    />
     <span className="leading-none">
       <span className="block whitespace-nowrap font-serif text-[19px] text-foreground sm:text-[22px]">
         Rooted With You
@@ -84,18 +80,6 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 px-3 pt-[calc(env(safe-area-inset-top)+0.5rem)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[env(safe-area-inset-top)] before:bg-primary before:content-[''] sm:px-5 sm:pt-[calc(env(safe-area-inset-top)+0.75rem)]">
-      <div className="mx-auto mb-2 flex max-w-[1440px] justify-center text-primary-foreground sm:justify-end">
-        <a
-          href={contactPhoneHref}
-          className="inline-flex min-h-8 items-center gap-2 rounded-md bg-primary px-3 py-1 text-xs font-medium tracking-wide transition-colors hover:bg-primary/90 sm:px-4"
-          aria-label={`Call us at ${contactPhone}`}
-        >
-          <Phone size={13} aria-hidden="true" />
-          <span>Call us</span>
-          <span>{contactPhone}</span>
-        </a>
-      </div>
-
       <div className="relative mx-auto max-w-[1440px] rounded-xl border border-border/80 bg-background/85 px-4 shadow-lg backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 sm:px-6 lg:rounded-[1.25rem]">
         <div className="flex h-[68px] items-center justify-between gap-3">
           <Logo />

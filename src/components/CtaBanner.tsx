@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { contactPhoneHref } from "@/lib/contact";
 
 const CtaBanner = () => (
-  <section className="animate-section bg-primary py-20 text-primary-foreground">
+  <section className="animate-section section-pattern pattern-contours bg-primary py-20 text-primary-foreground">
     <div className="container grid items-end gap-10 md:grid-cols-[1fr_auto]">
       <div>
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-70">Start with a conversation</p>

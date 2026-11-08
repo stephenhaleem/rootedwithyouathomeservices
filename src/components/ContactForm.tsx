@@ -1,8 +1,14 @@
-import { useState } from "react";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { contactPhone, contactPhoneHref } from "@/lib/contact";
+import { useState } from "react";
+import {
+  contactEmail,
+  contactEmailHref,
+  contactPhone,
+  contactPhoneHref,
+  submitContactForm,
+} from "@/lib/contact";
 
 const field =
   "h-12 w-full rounded-md border border-input bg-card px-3.5 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring";
@@ -10,22 +16,39 @@ const lab = "mb-2 block text-[13px] font-medium text-foreground";
 
 const ContactForm = () => {
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append("_subject", "Care conversation request");
+    formData.append("formType", "care-request");
+    setSubmitting(true);
+
+    try {
+      await submitContactForm(formData);
       toast({
-        title: "Request received",
-        description: "This is a demo form — nothing was submitted.",
+        title: "Request sent",
+        description: "Our care team will be in touch.",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 800);
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Unable to send your request",
+        description:
+          error instanceof Error
+            ? `${error.message} Please try again or email ${contactEmail}.`
+            : `Please try again or email ${contactEmail}.`,
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact-form" className="bg-[#334534] py-24 text-white">
+    <section id="contact-form" className="section-pattern pattern-dots bg-[#334534] py-24 text-white">
       <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 md:px-20 lg:grid-cols-2">
         <div>
           <p className="text-[11px] font-medium uppercase tracking-[0.06em] text-white/80">
@@ -42,6 +65,9 @@ const ContactForm = () => {
             <a href={contactPhoneHref} className="flex items-center gap-3">
               <Phone size={18} strokeWidth={1.4} /> {contactPhone}
             </a>
+            <a href={contactEmailHref} className="flex items-center gap-3">
+              <Mail size={18} strokeWidth={1.4} /> {contactEmail}
+            </a>
           </div>
         </div>
         <form
@@ -52,24 +78,28 @@ const ContactForm = () => {
             Let's arrange a care conversation
           </h3>
           <p className="mt-2 text-xs text-muted-foreground">
-            This demo form does not send or store your information.
+            Your request will be sent to our care team.
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <div>
-              <label className={lab}>Your name</label>
-              <input className={field} placeholder="Full name" required />
+              <label className={lab} htmlFor="contact-name">Your name</label>
+              <input id="contact-name" name="name" className={field} placeholder="Full name" required />
             </div>
             <div>
-              <label className={lab}>Phone number</label>
+              <label className={lab} htmlFor="contact-phone">Phone number</label>
               <input
+                id="contact-phone"
+                name="phone"
                 className={field}
                 type="tel"
                 placeholder="Your phone number"
               />
             </div>
             <div className="sm:col-span-2">
-              <label className={lab}>Email address</label>
+              <label className={lab} htmlFor="contact-email">Email address</label>
               <input
+                id="contact-email"
+                name="email"
                 className={field}
                 type="email"
                 placeholder="you@example.ca"
@@ -77,8 +107,10 @@ const ContactForm = () => {
               />
             </div>
             <div className="relative sm:col-span-2">
-              <label className={lab}>I'm exploring support for...</label>
+              <label className={lab} htmlFor="contact-support-for">I'm exploring support for...</label>
               <select
+                id="contact-support-for"
+                name="supportFor"
                 className={`${field} appearance-none text-muted-foreground`}
                 defaultValue=""
               >
@@ -98,6 +130,8 @@ const ContactForm = () => {
             <label className="flex items-center gap-3 text-[11px] text-muted-foreground sm:col-span-2">
               <input
                 type="checkbox"
+                name="consent"
+                value="yes"
                 className="h-4 w-4 rounded border-input"
                 required
               />
@@ -108,10 +142,10 @@ const ContactForm = () => {
           <div className="mt-6 flex items-center justify-between gap-4">
             <button
               type="submit"
-              disabled={loading}
+              disabled={submitting}
               className="inline-flex items-center gap-4 rounded-md bg-primary px-6 py-4 text-sm font-medium text-white hover:bg-primary/90 disabled:opacity-60"
             >
-              {loading ? "Sending…" : "Request a care conversation"}{" "}
+              {submitting ? "Sending…" : "Request a care conversation"}{" "}
               <ArrowRight size={16} />
             </button>
           </div>

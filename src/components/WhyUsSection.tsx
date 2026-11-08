@@ -8,7 +8,7 @@ const points = [
 ];
 
 const WhyUsSection = () => (
-  <section className="border-b border-border bg-card py-20">
+  <section className="section-pattern pattern-contours border-b border-border bg-card py-20">
     <div className="mx-auto max-w-[1440px] px-6 text-center md:px-20">
       <p className="text-[11px] font-medium uppercase tracking-[0.06em] text-primary">
         What sets our care apart

@@ -19,7 +19,7 @@ const serviceAreas = [
 
 const FindUsSection = () => (
   <section
-    className="animate-section border-b border-border bg-secondary/35 py-20 sm:py-24"
+    className="animate-section section-pattern pattern-contours border-b border-border bg-secondary/35 py-20 sm:py-24"
     id="service-areas"
   >
     <div className="container">

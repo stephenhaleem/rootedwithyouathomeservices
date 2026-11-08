@@ -14,10 +14,10 @@ const steps = [
 ];
 
 const TrustSection = () => (
-  <section className="bg-[#e6ebde] py-24">
+  <section className="section-pattern pattern-dots bg-[#e6ebde] py-24">
     <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 md:px-20 lg:grid-cols-2">
       <img
-        src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1100&q=85"
+        src="src/assets/female-nurse-doing-checkup-consultation-with-old-patient-hospital-waiting-area-having-walking-frame-medical-assistant-writing-clinical-report-appointment-form-health-center.jpg"
         alt="A caregiver looking through a photo album with an older adult"
         loading="lazy"
         className="h-[420px] w-full rounded-md object-cover lg:max-w-[550px]"

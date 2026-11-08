@@ -5,7 +5,7 @@ import { contactPhone, contactPhoneHref } from "@/lib/contact";
 const TermsOfService = () => (
   <div className="min-h-screen">
     <Navbar />
-    <section className="animate-section border-b border-border bg-background py-20">
+    <section className="animate-section section-pattern pattern-dots border-b border-border bg-background py-20">
       <div className="container max-w-2xl">
         <p className="section-label">Legal</p>
         <h1 className="section-title mt-5">Terms of Service</h1>

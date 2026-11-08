@@ -28,7 +28,7 @@ const moments = [
     cat: "Morning",
     title: "A gentle start",
     text: "A cup of tea, a favourite spot in the sunshine and support with morning routines when you need it.",
-    img: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=900&q=85",
+    img: "src/assets/side-view-man-having-lunch-restaurant (1).jpg",
   },
   {
     cat: "Afternoon",
@@ -40,12 +40,12 @@ const moments = [
     cat: "Evening",
     title: "Good company",
     text: "Music, familiar stories and time to unwind in familiar company.",
-    img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85",
+    img: "src/assets/happy-family-having-nice-thanksgiving-dinner-together (1).jpg",
   },
 ];
 
 export const DayToDaySection = () => (
-  <section className="bg-card py-24">
+  <section className="section-pattern pattern-dots bg-card py-24">
     <div className={wrap}>
       <Label>From morning to evening</Label>
       <div className="mt-3 grid gap-4 md:grid-cols-2 md:items-end">
@@ -84,7 +84,7 @@ export const DayToDaySection = () => (
 );
 
 export const HomeVisitSection = () => (
-  <section className="bg-[#eee6dc] py-24">
+  <section className="section-pattern pattern-contours bg-[#eee6dc] py-24">
     <div
       className={`${wrap} grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]`}
     >
@@ -208,8 +208,8 @@ const decision = [
 ];
 
 export const DecisionStepsSection = () => (
-  <section className="bg-[#f0f1ea] py-24">
-    <div className={`${wrap} grid gap-12 md:grid-cols-[0.8fr_1.2fr]`}>
+  <section className="section-pattern pattern-dots bg-[#f0f1ea] py-24">
+    <div className={`${wrap} grid gap-12 md:grid-cols-[1.2fr_0.8fr]`}>
       <div>
         <Label>For you and your family</Label>
         <h2 className="mt-4 max-w-[340px] text-4xl leading-tight text-foreground md:text-[44px]">
@@ -274,21 +274,6 @@ const faqs = [
 export const FaqSection = () => (
   <section className="bg-card py-24">
     <div className={`${wrap} grid gap-12 md:grid-cols-[0.8fr_1.2fr]`}>
-      <div>
-        <Label>A little clarity</Label>
-        <h2 className="mt-4 max-w-[340px] text-4xl leading-tight text-foreground md:text-[44px]">
-          It's natural to have questions.
-        </h2>
-        <p className="mt-6 max-w-[320px] text-[15px] leading-7 text-muted-foreground">
-          A few helpful starting points for older adults and their families.
-        </p>
-        <Link
-          to="/contact"
-          className="mt-5 inline-flex items-center gap-2 text-[13px] font-medium text-primary underline underline-offset-4"
-        >
-          Ask us a question <ArrowUpRight size={13} />
-        </Link>
-      </div>
       <Accordion
         type="single"
         collapsible
@@ -314,6 +299,21 @@ export const FaqSection = () => (
           </AccordionItem>
         ))}
       </Accordion>
+      <div className="flex flex-col items-end text-right">
+        <Label>A little clarity</Label>
+        <h2 className="mt-4 max-w-[340px] text-4xl leading-tight text-foreground md:text-[44px]">
+          It's natural to have questions.
+        </h2>
+        <p className="mt-6 max-w-[320px] text-[15px] leading-7 text-muted-foreground">
+          A few helpful starting points for older adults and their families.
+        </p>
+        <Link
+          to="/contact"
+          className="mt-5 inline-flex items-center gap-2 text-[13px] font-medium text-primary underline underline-offset-4"
+        >
+          Ask us a question <ArrowUpRight size={13} />
+        </Link>
+      </div>
     </div>
   </section>
 );

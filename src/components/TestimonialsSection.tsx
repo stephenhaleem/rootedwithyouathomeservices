@@ -36,7 +36,7 @@ const priorities = [
 const TestimonialsSection = ({ limit }: { limit?: number }) => {
   const shown = limit ? priorities.slice(0, limit) : priorities;
   return (
-    <section className="animate-section border-b border-border bg-card py-24">
+    <section className="animate-section section-pattern pattern-contours border-b border-border bg-card py-24">
       <div className="container">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>

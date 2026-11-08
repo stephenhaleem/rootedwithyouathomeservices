@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Navbar";
 import { openCookieSettings } from "@/lib/cookie-preferences";
-import { contactPhone, contactPhoneHref } from "@/lib/contact";
+import {
+  contactEmail,
+  contactEmailHref,
+  contactPhone,
+  contactPhoneHref,
+} from "@/lib/contact";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const cols = [
   {
@@ -27,7 +33,7 @@ const cols = [
 const Footer = () => (
   <footer className="bg-background">
     <div className="mx-auto max-w-[1440px] px-6 pt-16 md:px-20">
-      <div className="grid gap-10 border-b border-border pb-12 md:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
+      <div className="grid gap-10 border-b border-border pb-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr_1.5fr]">
         <div>
           <Logo />
         </div>
@@ -53,7 +59,14 @@ const Footer = () => (
           >
             {contactPhone}
           </a>
+          <a
+            href={contactEmailHref}
+            className="mt-2 block break-all text-sm text-muted-foreground hover:text-primary"
+          >
+            {contactEmail}
+          </a>
         </div>
+        <NewsletterSignup />
       </div>
       <div className="grid items-center gap-3 py-7 text-[11px] text-muted-foreground md:grid-cols-3">
         <p>© {new Date().getFullYear()} Rooted With You</p>
