@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
 import { contactPhone, contactPhoneHref } from "@/lib/contact";
-import caringHandsLogo from "@/assets/Caring Hands Elder Care Emblem.png";
 
 const aboutLinks = [
   {
@@ -35,9 +34,12 @@ export const Logo = () => (
     aria-label="Rooted With You home"
   >
     <img
-      src={caringHandsLogo}
+      src="/logo-96.png"
       alt="Caring Hands Elder Care emblem"
       className="h-10 w-10 shrink-0 rounded-full border border-primary/60 bg-background object-contain shadow-sm sm:h-12 sm:w-12"
+      width="96"
+      height="96"
+      decoding="async"
     />
     <span className="leading-none">
       <span className="block whitespace-nowrap font-serif text-[19px] text-foreground sm:text-[22px]">

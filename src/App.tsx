@@ -1,19 +1,21 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Lenis from "lenis";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
-import ServicesPage from "./pages/ServicesPage.tsx";
-import TestimonialsPage from "./pages/TestimonialsPage.tsx";
-import ContactPage from "./pages/ContactPage.tsx";
-import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
-import TermsOfService from "./pages/TermsOfService.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import SiteSeo from "@/components/SiteSeo";
 import CookieConsent from "@/components/CookieConsent";
+
+const Index = lazy(() => import("./pages/Index.tsx"));
+const AboutPage = lazy(() => import("./pages/AboutPage.tsx"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage.tsx"));
+const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage.tsx"));
+const ContactPage = lazy(() => import("./pages/ContactPage.tsx"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -39,16 +41,27 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SmoothScroll />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <SiteSeo />
+        <Suspense
+          fallback={
+            <main
+              className="min-h-screen bg-background"
+              aria-busy="true"
+              aria-label="Loading page"
+            />
+          }
+        >
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
         <CookieConsent />
       </BrowserRouter>
     </TooltipProvider>

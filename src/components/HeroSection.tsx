@@ -63,6 +63,11 @@ const HeroSection = () => {
           <img
             src={heroImage}
             alt="A healthcare aide enjoying tea with an older adult in a garden"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width="1920"
+            height="1080"
             className="h-[500px] w-full rounded-t-[260px] rounded-b-md object-cover md:h-[540px]"
           />
           <div className="absolute bottom-[-28px] left-0 w-[240px] rounded-md bg-card p-5 shadow-sm sm:-left-6">

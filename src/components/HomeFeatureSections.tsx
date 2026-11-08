@@ -9,7 +9,6 @@ import {
   Minus,
   Plus,
 } from "lucide-react";
-import morningImage from "@/assets/side-view-man-having-lunch-restaurant (1).jpg";
 import eveningImage from "@/assets/happy-family-having-nice-thanksgiving-dinner-together (1).jpg";
 import {
   Accordion,
@@ -30,19 +29,23 @@ const moments = [
     cat: "Morning",
     title: "A gentle start",
     text: "A cup of tea, a favourite spot in the sunshine and support with morning routines when you need it.",
-    img: morningImage,
+    img: "/images/morning-routine.jpg",
+    srcSet:
+      "/images/morning-routine-700.jpg 700w, /images/morning-routine.jpg 1400w",
   },
   {
     cat: "Afternoon",
     title: "Something to look forward to",
     text: "A walk, a creative project or a friendly conversation with a healthcare aide who knows your home.",
     img: "https://images.unsplash.com/photo-1559234938-b60fff04894d?w=900&q=85",
+    srcSet: undefined,
   },
   {
     cat: "Evening",
     title: "Good company",
     text: "Music, familiar stories and time to unwind in familiar company.",
     img: eveningImage,
+    srcSet: undefined,
   },
 ];
 
@@ -63,8 +66,11 @@ export const DayToDaySection = () => (
           <article key={m.title}>
             <img
               src={m.img}
+              srcSet={m.srcSet}
+              sizes="(min-width: 768px) 33vw, 100vw"
               alt=""
               loading="lazy"
+              decoding="async"
               className="aspect-[4/3] w-full rounded-md object-cover"
             />
             <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.06em] text-primary">
@@ -120,6 +126,9 @@ export const HomeVisitSection = () => (
           src="https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&q=85"
           alt="A meal shared at home"
           loading="lazy"
+          decoding="async"
+          width="1200"
+          height="750"
           className="aspect-[16/10] w-full rounded-md object-cover"
         />
         <figcaption className="mt-4 text-[11px] text-muted-foreground">
@@ -156,6 +165,9 @@ export const HomeGallerySection = () => (
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=85"
             alt="A bright, comfortable bedroom"
             loading="lazy"
+            decoding="async"
+            width="1200"
+            height="800"
             className="h-[330px] w-full rounded-md object-cover md:h-[360px]"
           />
           <figcaption className="mt-3 flex items-baseline justify-between">
@@ -172,6 +184,9 @@ export const HomeGallerySection = () => (
             src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000&q=85"
             alt="A welcoming living room"
             loading="lazy"
+            decoding="async"
+            width="1000"
+            height="800"
             className="h-[330px] w-full rounded-md object-cover md:h-[360px]"
           />
           <figcaption className="mt-3 font-serif text-2xl text-foreground">

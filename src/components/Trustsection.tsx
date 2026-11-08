@@ -1,5 +1,3 @@
-import trustImage from "@/assets/female-nurse-doing-checkup-consultation-with-old-patient-hospital-waiting-area-having-walking-frame-medical-assistant-writing-clinical-report-appointment-form-health-center.jpg";
-
 const steps = [
   {
     title: "Listen first",
@@ -19,9 +17,14 @@ const TrustSection = () => (
   <section className="section-pattern pattern-dots bg-[#e6ebde] py-24">
     <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-6 md:px-20 lg:grid-cols-2">
       <img
-        src={trustImage}
+        src="/images/care-team.jpg"
+        srcSet="/images/care-team-800.jpg 800w, /images/care-team.jpg 1600w"
+        sizes="(min-width: 1024px) 550px, 100vw"
         alt="A healthcare worker consulting with an older adult"
         loading="lazy"
+        decoding="async"
+        width="1600"
+        height="900"
         className="h-[420px] w-full rounded-md object-cover lg:max-w-[550px]"
       />
       <div>
