@@ -9,6 +9,8 @@ import {
   Minus,
   Plus,
 } from "lucide-react";
+import morningImage from "@/assets/side-view-man-having-lunch-restaurant (1).jpg";
+import eveningImage from "@/assets/happy-family-having-nice-thanksgiving-dinner-together (1).jpg";
 import {
   Accordion,
   AccordionContent,
@@ -28,7 +30,7 @@ const moments = [
     cat: "Morning",
     title: "A gentle start",
     text: "A cup of tea, a favourite spot in the sunshine and support with morning routines when you need it.",
-    img: "src/assets/side-view-man-having-lunch-restaurant (1).jpg",
+    img: morningImage,
   },
   {
     cat: "Afternoon",
@@ -40,7 +42,7 @@ const moments = [
     cat: "Evening",
     title: "Good company",
     text: "Music, familiar stories and time to unwind in familiar company.",
-    img: "src/assets/happy-family-having-nice-thanksgiving-dinner-together (1).jpg",
+    img: eveningImage,
   },
 ];
 
